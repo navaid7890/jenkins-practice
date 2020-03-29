@@ -14,7 +14,7 @@ pipeline {
         }
         stage('git clone') {
             steps {
-                sh 'git clone https://github.com/navaid7890/jenkins-practice.git'
+                sh 'rm *;git clone https://github.com/navaid7890/jenkins-practice.git'
             }
         }
         stage('tfsvars create') {
