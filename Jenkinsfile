@@ -17,11 +17,6 @@ pipeline {
                 sh 'rm -rf jenkins-practice;git clone https://github.com/navaid7890/jenkins-practice.git'
             }
         }
-        stage('tfsvars create') {
-            steps {
-                sh 'cp /home/jenkins/vars.tf ./jenkins/'
-            }
-        }
         stage('terraform init') {
             steps {
                 sh '/home/jenkins/terraform init ./jenkins'
