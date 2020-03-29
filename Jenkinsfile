@@ -1,15 +1,37 @@
 pipeline {
-    agent any
-    stages {
-        stage('Example') {
-            steps {
-                echo 'Hello World'
-            }
+    agent {
+        node {
+            label 'master'
         }
     }
-    post { 
-        always { 
-            echo 'I will always say Hello again!'
+
+    stages {
+
+        stage('terraform started') {
+            steps {
+                sh 'echo "Started ...!" '
+            }
         }
+        stage('git clone') {
+            steps {
+                sh 'sudo rm -r*; sudo git clone https://github.com/navaid7890/jenkins-practice.git'
+            }
+        }
+        stage('tfsvars create') {
+            steps {
+                sh 'sudo cp /home/jenkins/vars.tf ./jenkins/'
+            }
+        }
+        stage('terraform init') {
+            steps {
+                sh 'sudo /home/jenkins/terraform init ./jenkins'
+            }
+        }
+        stage(' terraform ended') {
+            steps {
+                sh 'echo "Ended...!" '
+            }
+        }
+
     }
 }
