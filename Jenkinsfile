@@ -19,12 +19,12 @@ pipeline {
         }
         stage('tfsvars create') {
             steps {
-                sh 'sudo cp /home/jenkins/vars.tf ./jenkins/'
+                sh 'cp /home/jenkins/vars.tf ./jenkins/'
             }
         }
         stage('terraform init') {
             steps {
-                sh 'sudo /home/jenkins/terraform init ./jenkins'
+                sh '/home/jenkins/terraform init ./jenkins'
             }
         }
         stage(' terraform ended') {
