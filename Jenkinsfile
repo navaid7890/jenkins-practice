@@ -1,5 +1,9 @@
 pipeline {
-    
+    agent {
+        node {
+            label 'master'
+        }
+    }
     stages {
         
         stage('Print All') {
