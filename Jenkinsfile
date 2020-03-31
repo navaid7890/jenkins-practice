@@ -1,32 +1,15 @@
 pipeline {
-    agent {
-        node {
-            label 'master'
-        }
-    }
-
+    
     stages {
+        
+        stage('Print All') {
+            steps {
+                sh 'echo "Showing all directories!" '
+            }
 
-        stage('terraform started') {
             steps {
-                sh 'echo "Started ...!" '
+                sh 'ls -ah'
             }
         }
-        stage('git clone') {
-            steps {
-                sh 'rm -rf jenkins-practice;git clone https://github.com/navaid7890/jenkins-practice.git'
-            }
-        }
-        stage('terraform init') {
-            steps {
-                sh '/home/jenkins/terraform init ./jenkins'
-            }
-        }
-        stage(' terraform ended') {
-            steps {
-                sh 'echo "Ended...!" '
-            }
-        }
-
     }
 }
